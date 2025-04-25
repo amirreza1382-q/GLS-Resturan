@@ -31,6 +31,7 @@ public class MemberManager {
 		d.setSttafAddress(A[3]);
 		return d;
 	}
+
 	public Member[] SelectAll() throws FileNotFoundException {
 		String A[] = member.getarrayfromfile();
 		Member B[] = new Member[A.length];
@@ -40,12 +41,13 @@ public class MemberManager {
 		return B;
 
 	}
+
 	public Member[] searchfood(String s) throws FileNotFoundException {
 		String B[] = member.getarrayfromfile();
 		Member C[] = new Member[B.length];
 		int count = 0;
 		for (int x = 0; x < B.length; x++) {
-			Member member= split(B[x]);
+			Member member = split(B[x]);
 			if (member.getSttafName().equalsIgnoreCase(s))
 				C[count++] = member;
 
@@ -55,6 +57,7 @@ public class MemberManager {
 		return D;
 
 	}
+
 	public void Deletmember(int rowmember) throws FileNotFoundException {
 		if (rowmember <= 0)
 			return;
@@ -68,7 +71,14 @@ public class MemberManager {
 			}
 		}
 
-		member.setintofile(d1.trim());//hazf faseleh
+		member.setintofile(d1.trim());// hazf faseleh
+	}
+
+	public void updateMember(String newmember, Member updatedMember) throws FileNotFoundException {
+		String updatedData = updatedMember.getSttafName() + commons.SPILITTER + updatedMember.getMelliCode()
+				+ commons.SPILITTER + updatedMember.getNumberPhone() + commons.SPILITTER
+				+ updatedMember.getSttafAddress();
+		member.update(newmember, updatedData);
 	}
 
 }

@@ -8,32 +8,40 @@ public class Food {
 	private String Desername;
 	private String Drinkname;
 	public String getDesername() {
-		return Desername;
+		if (Desername != null && Desername.matches("\"[a-zA-Z]+\""))
+			return Desername;
+		else
+			return "Eror!Enter again";
 	}
 
 	public void setDesername(String desername) {
-		Desername = desername;
+		if (desername.matches("\"[a-zA-Z]+\""))
+			foodname = desername;
 	}
 
 	public String getDrinkname() {
-		return Drinkname;
+		if (Drinkname != null && Drinkname.matches("\"[a-zA-Z]+\""))
+			return Drinkname;
+		else
+			return "Eror!Enter again";
 	}
 
 	public void setDrinkname(String drinkname) {
-		Drinkname = drinkname;
+		if (drinkname.matches("\"[a-zA-Z]+\""))
+			foodname = drinkname;
 	}
 
 	//////////////////////////////// getFoodname
 	public String getFoodname() {
-		if (foodname != null && foodname.matches("(\"[\\\\p{IsAlphabetic}]+\")"))
+		if (foodname != null && foodname.matches("\"[a-zA-Z]+\""))
 			return foodname;
 		else
-			return "";
+			return "Eror!Enter again";
 	}
 
 	//////////////////////////////////////// setFoodname
 	public void setFoodname(String Foodname) {
-		if (Foodname.matches("(\"[\\\\p{IsAlphabetic}]+\")"))
+		if (Foodname.matches("\"[a-zA-Z]+\""))
 			foodname = Foodname;
 	}
 

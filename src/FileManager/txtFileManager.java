@@ -71,16 +71,31 @@ public class txtFileManager {
 
 	}
 
-	public void deletfood(String foodName) throws FileNotFoundException {
-		String[] food = getarrayfromfile();
+	public void delet(String a) throws FileNotFoundException {
+		String[] A = getarrayfromfile();
 		StringBuilder delet = new StringBuilder();
 
-		for (int x = 0; x < food.length; x++) { // استفاده از index به جای foreach
-			if (!food[x].contains(foodName)) {
-				delet.append(food[x]).append("\n");
+		for (int x = 0; x < A.length; x++) {
+			if (!A[x].contains(a)) {
+				delet.append(A[x]).append("\n");
 			}
 		}
 
-		setintofile(delet.toString().trim()); // حذف فضای اضافی
+		setintofile(delet.toString().trim()); 
 	}
+	public void update(String C, String updatedData) throws FileNotFoundException {
+	    String[] A = getarrayfromfile();
+	    String d1 = "";
+
+	    for (int x = 0; x < A.length; x++) {
+	        if (!A[x].contains(C)) {
+	            d1 = d1 + A[x]; // حفظ داده‌های دیگر
+	        } else {
+	            d1 = d1 + updatedData; 
+	        }
+	    }
+
+	    setintofile(d1.trim()); 
+	}
+	
 }

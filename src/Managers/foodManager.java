@@ -60,21 +60,19 @@ public class foodManager {
 
 	}
     ///////////////////////////////////
-	public void Deletfood(int rowfood) throws FileNotFoundException {
-		if (rowfood <= 0)
-			return;
+	public void Deletfood(String foodName) throws FileNotFoundException {
+	    if (!foodName.matches("[a-zA-Z]+")) { // بررسی اینکه مقدار فقط شامل حروف باشد
+	        System.out.println("Eror!");
+	        return;
+	    }
 
-		String B[] = f.getarrayfromfile();
-		String d1 = "";
-
-		for (int x = 0; x < B.length; x++) {
-			if (x != rowfood - 1) { // حذف ردیف مشخص شده
-				d1 = d1 + B[x];
-			}
-		}
-
-		f.setintofile(d1.trim());//hazf faseleh
+	    f.delet(foodName);
 	}
 	
-
+	public void updatefood(String newfood, Food updatedfood) throws FileNotFoundException {
+	    String updatedData = updatedfood.getFoodname() + commons.SPILITTER + updatedfood.getNumberfood()+
+	                         commons.SPILITTER + updatedfood.getFoodquantity() + commons.SPILITTER + updatedfood.getPrice()
+	                         +commons.SPILITTER+updatedfood.getDrinkname()+commons.SPILITTER+updatedfood.getDesername();
+	    f.update(newfood, updatedData); // استفاده از متد update در txtFileManager
+	}
 }
